@@ -15,7 +15,7 @@ class Snake
     struct block{
         int x,y;
     }s[W*H];
-    
+    float time_of_play;
     int direction,length;
     float speed;
     Font font;
@@ -23,7 +23,7 @@ class Snake
     Sprite snake_sprite;
 
     public:
-    Snake():speed(SPEED),length(START_LENGTH),direction(2)
+    Snake():speed(SPEED),length(START_LENGTH),direction(2),time_of_play(0.00f)
     {
         for (int  i = 0; i < length; i++)
         {
@@ -40,12 +40,12 @@ class Snake
     }
     const int getDirection() const {return direction;}
     void setDirection(int x){direction=x;}
-    int getLength() const{return length;}
+    const int getLength() const{return length;}
     void setLength(int x) {length=x;}
-    void setBlock(int i ,int x,int y) {this->s[i].x=x; this->s[i].y=y;}
-    void setBlockX(int i ,int x) {this->s[i].x=x;}
-    void setBlockY(int i ,int x) {this->s[i].x=x;}
+    const float getTime()const {return time_of_play;}
+    void setTime(float x){time_of_play=x;}
     block getBlock(int i) const {return s[i];}
+    void setBlock(int i ,int x,int y) {this->s[i].x=x; this->s[i].y=y;}
 
 };
 

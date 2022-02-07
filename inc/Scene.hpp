@@ -3,19 +3,23 @@
 
 
 #include "Snake.hpp"
+#include "Fruit.hpp"
+#include<math.h>
 
 #define SIZE_OF_PIXEL 16
 
 class Scene
 {
     private:
-        int width,height;
-        Texture board;
-        Sprite board_sprite; 
+        int width,height; 
         unsigned score;
-        Font font;
-        Text text;
         std::unique_ptr<Snake> snake;
+        std::unique_ptr<Fruit> fruit;
+        Texture board;
+        Sprite board_sprite;
+        Font font;
+        Text lose,points,time_s;
+        std::string points_str,time_str;
     public:
         Scene();
         void start();
@@ -26,8 +30,11 @@ class Scene
         }
         void restart(){
           snake=std::make_unique<Snake>();
+          fruit=std::make_unique<Fruit>();
+          score=0;
         }
         void tick();
+        void display(sf::RenderWindow& window);
 };
 
 #endif
